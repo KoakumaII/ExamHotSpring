@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 優化與社交標籤 -->
+    <title>泰安+ 旅圖OTA | 苗栗泰安溫泉數位樞紐 - 美人湯、客家與原民跨域深度湯旅</title>
+    <meta name="description" content="專為高質感療癒上班族、文創體驗家庭與國際觀光客設計的泰安溫泉數位平台。整合20家合法溫泉會館、大湖草莓、原民與客家文化，提供無縫 O2O 數位通票與即時路況，帶您展開深度的美人湯療癒旅程。">
+    <meta name="keywords" content="泰安溫泉, 苗栗溫泉, 美人湯, 泰雅族文化, 客家伴手禮, 溫泉保養品, 泰安路況, 地方創生">
+    
+    <!-- Open Graph (OG) 標籤 -->
+    <meta property="og:title" content="泰安+ 旅圖OTA | 苗栗泰安溫泉數位樞紐">
+    <meta property="og:description" content="打破交通與地域限制，一鍵開啟泰安美人湯、原民客家文創與在地物產的無縫療癒之旅。立即體驗數位通票！">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://yourusername.github.io/taian-hotspring/">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spa: {
+                            50: '#f4faf6',   // 極致清爽淺綠色背景 (Soft Mint Background)
+                            100: '#e6f3eb',  // 溫潤輕柔淺綠色 (Light Sage Accent)
+                            200: '#cfead9',  // 粉綠色邊框與輔助色
+                            300: '#a3d8b8',  // 中調粉綠
+                            700: '#2d6a4f',  // 森林深綠色 (Forest Green for interactive elements)
+                            800: '#1b4332',  // 文本專用森林黑綠色 (Dark Forest text)
+                            900: '#081c15',  // 深邃林冠綠背景 (Deep Forest background)
+                        },
+                        forest: {
+                            100: '#d8f3dc',
+                            200: '#b7e4c7',
+                            500: '#52b788',
+                            600: '#40916c',
+                            700: '#2d6a4f',
+                            800: '#1b4332',
+                            900: '#081c15',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics 4 (GA4) 預留位置 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'cookie_flags': 'max-age=7200;secure;samesite=none'
+        });
+    </script>
+</head>
+<body class="bg-spa-50 text-spa-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- 頂部即時公告欄（針對交通脆弱性痛點） -->
+    <div class="bg-forest-900 text-white text-xs md:text-sm py-2 px-4 shadow-inner border-b border-forest-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center space-y-1 sm:space-y-0">
+            <div class="flex items-center space-x-2">
+                <span class="flex h-2 w-2 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                </span>
+                <span class="font-medium text-emerald-300">即時路況監測（苗62線）：全線路況暢通，安全無虞</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>泰安天氣：☀ 晴朗森林風 22°C</span>
+                <button id="btn-road-detail" data-track-cta="查看即時路況詳情" data-track-category="road_info" class="underline hover:text-emerald-300 transition duration-150">查看即時天災安全100%退費承諾 ➜</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 導覽列 -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-spa-100 shadow-sm transition duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold tracking-wider text-forest-800 flex items-center gap-2">
+                    <i data-lucide="waves" class="text-forest-600"></i>
+                    泰安<span class="text-forest-500 font-normal">+ 旅圖OTA</span>
+                </a>
+            </div>
+            
+            <!-- 桌面版選單 -->
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="#value-proposition" class="hover:text-forest-600 text-spa-800/90 transition">數位通票</a>
+                <a href="#local-story" class="hover:text-forest-600 text-spa-800/90 transition">地方故事</a>
+                <a href="#painpoint-hub" class="hover:text-forest-600 text-spa-800/90 transition">路況安全</a>
+                <a href="#comparison" class="hover:text-forest-600 text-spa-800/90 transition">方案比較</a>
+                <a href="#faq" class="hover:text-forest-600 text-spa-800/90 transition">常見問答</a>
+                <a href="#inquiry-form" data-track-cta="導航欄_聯絡詢價" data-track-category="navigation" class="bg-forest-700 text-white px-4 py-2 rounded-full hover:bg-forest-600 transition shadow-sm">聯絡與訂製</a>
+            </div>
+
+            <!-- 手機版選單按鈕 -->
+            <div class="md:hidden">
+                <button id="btn-mobile-menu" class="p-2 text-spa-800 focus:outline-none" aria-label="切換選單">
+                    <i data-lucide="menu" id="menu-icon-open" class="h-6 w-6"></i>
+                    <i data-lucide="x" id="menu-icon-close" class="h-6 w-6 hidden"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 手機版選單下拉區塊 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-spa-100 transition-all duration-300 ease-in-out">
+            <div class="px-4 pt-2 pb-6 space-y-3 text-base font-medium shadow-lg">
+                <a href="#value-proposition" class="block py-2 hover:text-forest-600 border-b border-spa-50">數位通票</a>
+                <a href="#local-story" class="block py-2 hover:text-forest-600 border-b border-spa-50">地方故事</a>
+                <a href="#painpoint-hub" class="block py-2 hover:text-forest-600 border-b border-spa-50">路況安全</a>
+                <a href="#comparison" class="block py-2 hover:text-forest-600 border-b border-spa-50">方案比較</a>
+                <a href="#faq" class="block py-2 hover:text-forest-600 border-b border-spa-50">常見問答</a>
+                <a href="#inquiry-form" data-track-cta="手機選單_聯絡詢價" data-track-category="navigation" class="block w-full text-center bg-forest-700 text-white py-3 rounded-xl hover:bg-forest-600 transition shadow-sm">聯絡與訂製</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主視覺區塊 (Hero Section) -->
+    <section class="relative bg-spa-900 text-white min-h-[85vh] flex items-center py-20 px-4 md:px-8 overflow-hidden">
+        <!-- 背景圖片與半透明遮罩 -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80" alt="煙霧繚繞的泰安山林溫泉美人湯" class="w-full h-full object-cover object-center opacity-35 transform scale-105 transition duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-r from-forest-900 via-forest-900/80 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-8 space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-forest-800/80 backdrop-blur-md px-4 py-1.5 rounded-full text-forest-100 text-xs md:text-sm border border-forest-500/30">
+                    <i data-lucide="sparkles" class="h-4 w-4 text-emerald-300"></i>
+                    <span>2026台灣好湯十泉十美首獎 🏅</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    尋回身心的溫暖連結<br>
+                    <span class="text-forest-200">苗栗泰安「美人湯」數位通票</span>
+                </h1>
+                <p class="text-lg md:text-xl text-spa-100 max-w-2xl font-light leading-relaxed">
+                    我們打破大山與交通的限制，將頂級弱鹼性碳酸氫鈉泉、泰雅獵人文化、與客家手作美味打包成一鍵即享的數位旅程。讓疲憊的身心在泰安重獲新生。
+                </p>
+                
+                <!-- 受眾專屬標籤 -->
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="bg-white/10 text-spa-100 text-xs px-3 py-1 rounded-md border border-white/15"># 高質感療癒上班族</span>
+                    <span class="bg-white/10 text-spa-100 text-xs px-3 py-1 rounded-md border border-white/15"># 文創體驗親子家庭</span>
+                    <span class="bg-white/10 text-spa-100 text-xs px-3 py-1 rounded-md border border-white/15"># 國際客家尋根探索</span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#value-proposition" id="hero-cta-primary" data-track-cta="首頁主視覺_預約數位通票" data-track-category="hero" class="bg-forest-600 hover:bg-forest-500 text-white text-lg font-semibold px-8 py-4 rounded-xl text-center shadow-lg hover:shadow-forest-500/20 transition transform hover:-translate-y-0.5 duration-150 flex items-center justify-center gap-2">
+                        <i data-lucide="ticket" class="h-5 w-5"></i>
+                        立即探索數位通票
+                    </a>
+                    <a href="#local-story" id="hero-cta-secondary" data-track-cta="首頁主視覺_探索地方故事" data-track-category="hero" class="bg-white/10 hover:bg-white/20 text-white text-lg font-semibold px-8 py-4 rounded-xl text-center border border-white/30 backdrop-blur-sm transition duration-150 flex items-center justify-center gap-2">
+                        探索原客故事
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 痛點回應與即時系統 (Pain Point & Safety Hub) -->
+    <section id="painpoint-hub" class="py-16 bg-white border-b border-spa-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-forest-600 font-semibold tracking-wider uppercase text-sm">打破痛點 ‧ 建立連結</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-spa-800 mt-2">您擔心的交通與破碎資訊，我們幫您解決了！</h2>
+                <p class="text-spa-800/70 mt-3 text-sm md:text-base">以往去泰安總擔心路況？資訊破碎不知道住哪裡？「泰安+ 旅圖OTA」為您建立無縫數位保障。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 針對交通脆弱性痛點 -->
+                <div class="bg-spa-50 p-6 md:p-8 rounded-2xl border border-spa-200/50 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-forest-100 text-forest-800 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="shield-alert" class="text-forest-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-spa-800 mb-3">環境與交通脆弱？</h3>
+                        <p class="text-spa-800/70 text-sm leading-relaxed mb-4">
+                            苗62線易受天候影響？我們串接即時道路路況系統。若出發前 24 小時遇豪雨警報或道路管制，本平台保證 **100% 全額無條件退費**，免去任何行前擔憂！
+                        </p>
+                    </div>
+                    <button data-track-cta="痛點卡片_路況承諾" data-track-category="painpoint" class="text-forest-700 hover:text-forest-800 text-sm font-semibold flex items-center gap-1 mt-4">
+                        看我們的安全退費承諾 <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                    </button>
+                </div>
+
+                <!-- 針對組織破碎性與數位落後性痛點 -->
+                <div class="bg-spa-50 p-6 md:p-8 rounded-2xl border border-spa-200/50 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-forest-100 text-forest-800 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="layout-grid" class="text-forest-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-spa-800 mb-3">業者分散、資訊落後？</h3>
+                        <p class="text-spa-800/70 text-sm leading-relaxed mb-4">
+                            泰安雖然有20家合法溫泉會館，但以前需要一家家打電話詢問。「泰安+」扮演**虛擬溫泉協會**角色，去中心化整合所有業者，提供單一且即時的數位庫存預約。
+                        </p>
+                    </div>
+                    <a href="#value-proposition" data-track-cta="痛點卡片_一鍵整合預約" data-track-category="painpoint" class="text-forest-700 hover:text-forest-800 text-sm font-semibold flex items-center gap-1 mt-4">
+                        一鍵瀏覽全區空房 <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                    </a>
+                </div>
+
+                <!-- 針對商業模式中斷性（O2O 斷層） -->
+                <div class="bg-spa-50 p-6 md:p-8 rounded-2xl border border-spa-200/50 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-forest-100 text-forest-800 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="refresh-cw" class="text-forest-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-spa-800 mb-3">泡完溫泉就斷開連結？</h3>
+                        <p class="text-spa-800/70 text-sm leading-relaxed mb-4">
+                            以往泡湯結束就是旅程終點。「泰安+」打通 O2O 全通路，線下泡湯時掃碼加入 CRM，返家後可一鍵回購頂級美人湯溫泉泥保養品、客家手作特產與當季大湖草莓。
+                        </p>
+                    </div>
+                    <a href="#inquiry-form" data-track-cta="痛點卡片_了解O2O商城" data-track-category="painpoint" class="text-forest-700 hover:text-forest-800 text-sm font-semibold flex items-center gap-1 mt-4">
+                        了解線上回購商城 <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品價值區塊 (Product SKUs) -->
+    <section id="value-proposition" class="py-20 bg-spa-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-forest-600 font-semibold tracking-wider uppercase text-sm">泰安+ 專屬數位 SKU</span>
+                <h2 class="text-3xl font-bold text-spa-800 mt-2">融合溫泉與地方價值的「數位通票」</h2>
+                <p class="text-spa-800/70 mt-3 text-sm md:text-base">我們拒絕廉價促銷，致力提供最具文化深度的沉浸式體驗。每款組合皆內含泰安＋數據路況保障。</p>
+            </div>
+
+            <!-- SKU 列表 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- SKU 1: 高質感療癒上班族 / 親子 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-spa-200/60 hover:shadow-xl hover:border-forest-300 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64">
+                            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80" alt="頂級雙人美人湯溫泉會館套房" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-forest-700 text-white text-xs font-semibold px-3 py-1 rounded-full">主打推薦</div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold text-spa-800 mb-2">冬雪草莓泰雅湯旅 雙人二日數位通票</h3>
+                            <p class="text-spa-800/70 text-sm mb-6 leading-relaxed">
+                                專為高質感上班族與家庭設計。包含20家合法溫泉會館自選一晚、泰雅獵人文化手作體驗，以及大湖無毒草莓園採果抵用券，一票到底。
+                            </p>
+                            <ul class="space-y-2 mb-6 text-sm text-spa-800">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 含頂級美人湯住宿+手作早餐</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 泰雅編織/手雕文化工坊體驗 2 人份</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 大湖草莓在地採摘券</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-8">
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-3xl font-extrabold text-spa-800">NT$ 6,800</span>
+                            <span class="text-xs text-spa-800/50">/ 雙人尊榮體驗</span>
+                        </div>
+                        <button data-track-cta="預訂_冬雪草莓泰雅湯旅" data-track-category="sku_purchase" class="btn-purchase w-full bg-forest-700 hover:bg-forest-600 text-white text-center py-3.5 rounded-xl font-semibold transition flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                            預訂數位通票
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SKU 2: 國際客家尋根與深度探訪 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-spa-200/60 hover:shadow-xl hover:border-forest-300 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64">
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80" alt="客家歷史古厝與花布文化" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-forest-700 text-white text-xs font-semibold px-3 py-1 rounded-full font-sans">International</div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold text-spa-800 mb-2">國際尋根・客家原民文化深度一日通票</h3>
+                            <p class="text-spa-800/70 text-sm mb-6 leading-relaxed">
+                                專為喜愛地方文史、國際旅客或海外客家尋根者打造。英文與日文語音導覽，深度解析清安豆腐街、洗水坑與泰雅部落交融歷史，搭配泰安頂級大眾美人湯體驗。
+                            </p>
+                            <ul class="space-y-2 mb-6 text-sm text-spa-800">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 在地星級飯店露天美人湯池單次體驗</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> AI 語音雙語文化語音導覽導覽</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 洗水坑手工豆腐御膳套餐</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-8">
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-3xl font-extrabold text-spa-800">NT$ 1,980</span>
+                            <span class="text-xs text-spa-800/50">/ 每人深度探訪</span>
+                        </div>
+                        <button data-track-cta="預訂_國際客家原民尋根" data-track-category="sku_purchase" class="btn-purchase w-full bg-forest-700 hover:bg-forest-600 text-white text-center py-3.5 rounded-xl font-semibold transition flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                            預訂深度通票
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SKU 3: O2O 全通路回購產品 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-spa-200/60 hover:shadow-xl hover:border-forest-300 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-64">
+                            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=800&q=80" alt="天然溫泉泥保養品與在地特產" class="w-full h-full object-cover">
+                            <div class="absolute top-4 left-4 bg-forest-700 text-white text-xs font-semibold px-3 py-1 rounded-full">線上回購熱銷</div>
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-2xl font-bold text-spa-800 mb-2">泰安美人湯泥漿 居家療癒保養套組</h3>
+                            <p class="text-spa-800/70 text-sm mb-6 leading-relaxed">
+                                打破空間阻礙！將泰安「弱鹼性碳酸氫鈉泉」極致保濕因子融入護膚泥漿中。結合泰雅古法竹炭皂與在地特產，讓您在家也能重溫泰安溫泉的細緻滑嫩。
+                            </p>
+                            <ul class="space-y-2 mb-6 text-sm text-spa-800">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 美人湯泥漿深層清潔面膜 (150ml)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 泰雅手工冷壓竹炭淨膚皂 1 顆</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="text-forest-600 h-4 w-4"></i> 線上訂購 48 小時低溫新鮮宅配到府</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-8">
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-3xl font-extrabold text-spa-800">NT$ 1,280</span>
+                            <span class="text-xs text-spa-800/50">/ 線上回購免運</span>
+                        </div>
+                        <button data-track-cta="預訂_居家保養套組" data-track-category="sku_purchase" class="btn-purchase w-full bg-forest-700 hover:bg-forest-600 text-white text-center py-3.5 rounded-xl font-semibold transition flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                            線上訂購宅配
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 地方故事區塊 (Local Story & Interactive RAG) -->
+    <section id="local-story" class="py-20 bg-forest-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(82,183,136,0.15),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- 故事引言 -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-forest-200 font-semibold tracking-wider uppercase text-sm">地方靈魂 ‧ 文化厚度</span>
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+                        這不只是一池溫泉<br>
+                        更是一段療癒的「數位故事」
+                    </h2>
+                    <p class="text-spa-100/80 leading-relaxed font-light text-sm md:text-base">
+                        泰安的溫泉泉質富含碳酸氫鈉，俗稱「美人湯」，對皮膚有極佳的保濕修護力。而這裡更是泰雅族部落的世居之地、客家先民開墾的重鎮。
+                    </p>
+                    <p class="text-spa-100/80 leading-relaxed font-light text-sm md:text-base">
+                        我們透過 AI 知識庫（RAG 系統），將泰雅古老神話、客家染織工藝與泉質科學分析整合。點擊右側，即刻與泰安的土地靈魂展開對話。
+                    </p>
+                </div>
+
+                <!-- 互動式 RAG 文化故事切換器 -->
+                <div class="lg:col-span-7 bg-forest-800/60 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-3xl">
+                    <h3 class="text-xl font-semibold text-forest-200 mb-6 flex items-center gap-2">
+                        <i data-lucide="bot" class="text-forest-200"></i>
+                        泰安 AI 文化與溫泉導航系統 (RAG)
+                    </h3>
+                    
+                    <!-- 導航分頁 -->
+                    <div class="flex flex-wrap gap-2 mb-6 border-b border-white/10 pb-4">
+                        <button onclick="switchStory('spring')" id="tab-spring" class="story-tab active bg-forest-700 text-white text-xs md:text-sm px-4 py-2 rounded-full font-medium transition">
+                            💧 美人湯科學
+                        </button>
+                        <button onclick="switchStory('atayal')" id="tab-atayal" class="story-tab bg-white/5 hover:bg-white/10 text-spa-100 text-xs md:text-sm px-4 py-2 rounded-full font-medium transition">
+                            🏹 泰雅獵人文化
+                        </button>
+                        <button onclick="switchStory('hakka')" id="tab-hakka" class="story-tab bg-white/5 hover:bg-white/10 text-spa-100 text-xs md:text-sm px-4 py-2 rounded-full font-medium transition">
+                            🏮 客家尋根傳承
+                        </button>
+                    </div>
+
+                    <!-- 故事顯示區 -->
+                    <div class="min-h-[220px] flex flex-col justify-between">
+                        <!-- 溫泉內容 -->
+                        <div id="story-content-spring" class="story-panel space-y-4">
+                            <h4 class="text-lg font-bold text-white">泉質奇蹟：弱鹼性碳酸氫鈉泉</h4>
+                            <p class="text-spa-100/80 text-sm leading-relaxed font-light">
+                                泰安溫泉的泉溫約在 $47^\circ\text{C}$ 至 $52^\circ\text{C}$ 之間，$\text{pH}$ 值維持在微鹼性的 $7.8 \sim 8.1$。豐富的碳酸氫鈉能軟化角質、促進肌膚代謝。因其觸感潤滑如脂，浸泡後皮膚光滑細緻，因而被譽為極致的「美人湯」。
+                            </p>
+                            <p class="text-forest-200 text-xs font-semibold">
+                                * 數據來源：苗栗縣溫泉檢測中心 2025 年官方泉質認證。
+                            </p>
+                        </div>
+
+                        <!-- 泰雅內容 -->
+                        <div id="story-content-atayal" class="story-panel hidden space-y-4">
+                            <h4 class="text-lg font-bold text-white">泰雅古道與織布的神話</h4>
+                            <p class="text-spa-100/80 text-sm leading-relaxed font-light">
+                                泰安（昔稱「上島」）是泰雅族「汶水群」的傳統獵場。對原住民而言，溫泉是「祖靈賜予的療癒之水」。我們的通票將帶領您跟隨部落長老的腳步走進神祕古道，並親手操作泰雅傳統水平背帶織布機，將大山的記憶編織進每一條織紋中。
+                            </p>
+                            <p class="text-forest-200 text-xs font-semibold">
+                                * 本體驗與在地原民文創工坊合作，分利透明。
+                            </p>
+                        </div>
+
+                        <!-- 客家內容 -->
+                        <div id="story-content-hakka" class="story-panel hidden space-y-4">
+                            <h4 class="text-lg font-bold text-white">洗水坑與百年客家茶染工藝</h4>
+                            <p class="text-spa-100/80 text-sm leading-relaxed font-light">
+                                沿著汶水溪而上，清安豆腐街（洗水坑）是客家與泰雅交易的歷史節點。客家人將溫泉富含的礦物質用於天然茶染中，創造出獨特的大地色系。透過我們的尋根通票，您將漫步於百年客家古厝，體驗最具靈魂溫度的茶染手作，重現先民開墾的勤緻精神。
+                            </p>
+                            <p class="text-forest-200 text-xs font-semibold">
+                                * 海外客家族群（如馬、星、日）來訪，本平台提供專屬雙語接待。
+                            </p>
+                        </div>
+
+                        <!-- 導購互動按鈕 -->
+                        <div class="pt-6 border-t border-white/10 mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <span class="text-xs text-spa-200">喜歡這個文化故事？直接預訂包含此體驗的通票</span>
+                            <a href="#value-proposition" id="btn-story-cta" data-track-cta="RAG故事_預約通票" data-track-category="story_section" class="bg-forest-600 hover:bg-forest-500 text-white text-xs md:text-sm font-semibold px-5 py-2.5 rounded-full transition inline-flex items-center gap-1.5 shadow-md">
+                                <i data-lucide="ticket" class="h-4 w-4"></i> 預訂專屬通票
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI 溫泉知識小管家聊天機器人區塊 (AI Chatbot Section) -->
+    <section id="ai-chatbot" class="py-16 bg-spa-100/50 border-b border-spa-200/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-forest-700 font-semibold tracking-wider uppercase text-sm">即時智慧諮詢 ‧ 疑難解答</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-spa-800 mt-2">泰安溫泉 AI 智慧小祕書</h2>
+                <p class="text-spa-800/70 mt-3 text-sm md:text-base">
+                    對泉質功效、交通安全退費或行程規劃有疑問？隨時向我們的 AI 小祕書提問，獲得最即時的在地專業科普！
+                </p>
+            </div>
+
+            <!-- 聊天機器人主視窗 -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
+                <!-- 左側：常見推薦提問快捷鍵 -->
+                <div class="lg:col-span-4 bg-white p-6 rounded-3xl border border-spa-200/60 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-md font-bold text-spa-800 mb-4 flex items-center gap-2">
+                            <i data-lucide="help-circle" class="text-forest-600"></i>
+                            熱門科普問題點擊
+                        </h4>
+                        <div class="space-y-2.5">
+                            <button onclick="askBot('泰安的溫泉泉質有何特別？有何功效？')" class="w-full text-left bg-spa-50 hover:bg-spa-100 text-spa-800 text-xs md:text-sm py-3 px-4 rounded-xl border border-spa-200/40 hover:border-forest-300 transition-all flex items-center justify-between">
+                                <span>💧 泰安美人湯泉質與功效</span>
+                                <i data-lucide="chevron-right" class="h-4 w-4 text-spa-800/40 shrink-0"></i>
+                            </button>
+                            <button onclick="askBot('下大雨時路況安不安全？如何退費？')" class="w-full text-left bg-spa-50 hover:bg-spa-100 text-spa-800 text-xs md:text-sm py-3 px-4 rounded-xl border border-spa-200/40 hover:border-forest-300 transition-all flex items-center justify-between">
+                                <span>🚗 交通脆弱與天災退費政策</span>
+                                <i data-lucide="chevron-right" class="h-4 w-4 text-spa-800/40 shrink-0"></i>
+                            </button>
+                            <button onclick="askBot('推薦兩天一夜行程怎麼排？')" class="w-full text-left bg-spa-50 hover:bg-spa-100 text-spa-800 text-xs md:text-sm py-3 px-4 rounded-xl border border-spa-200/40 hover:border-forest-300 transition-all flex items-center justify-between">
+                                <span>📅 兩天一夜經典療癒行程</span>
+                                <i data-lucide="chevron-right" class="h-4 w-4 text-spa-800/40 shrink-0"></i>
+                            </button>
+                            <button onclick="askBot('附近有什麼好吃的客家或原民美食？')" class="w-full text-left bg-spa-50 hover:bg-spa-100 text-spa-800 text-xs md:text-sm py-3 px-4 rounded-xl border border-spa-200/40 hover:border-forest-300 transition-all flex items-center justify-between">
+                                <span>🍲 在地必吃客家原民美食</span>
+                                <i data-lucide="chevron-right" class="h-4 w-4 text-spa-800/40 shrink-0"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-spa-100 text-xs text-spa-800/50 flex items-center gap-2">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>AI 知識庫已即時串接 2026 最新泉質檢測數據</span>
+                    </div>
+                </div>
+
+                <!-- 右側：主聊天對話框 -->
+                <div class="lg:col-span-8 bg-white rounded-3xl border border-spa-200/60 shadow-lg flex flex-col overflow-hidden h-[450px]">
+                    <!-- 對話框頂部狀態欄 -->
+                    <div class="bg-forest-800 text-white px-6 py-4 flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="bot" class="text-emerald-300 h-5 w-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-semibold tracking-wider">泰安＋ 溫泉小管家</h5>
+                                <span class="text-[10px] text-emerald-300 flex items-center gap-1">● 在線智慧應答中</span>
+                            </div>
+                        </div>
+                        <button onclick="clearChat()" class="text-xs text-white/70 hover:text-white transition flex items-center gap-1">
+                            <i data-lucide="rotate-ccw" class="h-3.5 w-3.5"></i> 清空對話
+                        </button>
+                    </div>
+
+                    <!-- 對話內容顯示區 -->
+                    <div id="chat-messages" class="flex-1 p-6 overflow-y-auto space-y-4 bg-spa-50/30">
+                        <!-- 機器人歡迎訊息 -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center shrink-0">
+                                <i data-lucide="bot" class="h-4 w-4"></i>
+                            </div>
+                            <div class="bg-white border border-spa-200/50 text-spa-800 text-sm py-3 px-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm leading-relaxed">
+                                您好！我是泰安溫泉的 AI 智慧小祕書 🌲。我可以為您解答關於泰安的美人湯泉質功效、兩天一夜行程規劃、最新即時路況，或是推薦在地的泰雅與客家美食喔！請點擊左側的建議問題，或者直接在下方輸入您的疑問：
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 輸入欄與發送 -->
+                    <div class="p-4 border-t border-spa-200/60 bg-white flex items-center gap-2">
+                        <input type="text" id="chat-input" onkeypress="handleChatKeypress(event)" placeholder="請輸入您想了解的泰安溫泉小知識..." class="flex-1 bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-sm text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition">
+                        <button onclick="sendChatMessage()" class="bg-forest-700 hover:bg-forest-600 text-white p-3 rounded-xl transition shadow-md flex items-center justify-center shrink-0">
+                            <i data-lucide="send" class="h-5 w-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色比較區 (Feature Comparison) -->
+    <section id="comparison" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-forest-600 font-semibold tracking-wider uppercase text-sm">為何選擇 泰安+ 旅圖OTA</span>
+                <h2 class="text-3xl font-bold text-spa-800 mt-2">改變您的旅遊商業模式</h2>
+                <p class="text-spa-800/70 mt-3 text-sm md:text-base">我們不只是銷售平台，更是重組地方產業、打破天災交通隱憂的「數位安全網」。</p>
+            </div>
+
+            <!-- 自適應響應式表格 -->
+            <div class="overflow-x-auto rounded-3xl border border-spa-200/60 shadow-sm">
+                <table class="w-full text-left border-collapse bg-white min-w-[640px]">
+                    <thead>
+                        <tr class="bg-spa-100 border-b border-spa-200">
+                            <th class="p-5 font-semibold text-spa-800 text-base">體驗維度</th>
+                            <th class="p-5 font-semibold text-spa-800 text-base">傳統大型國際 OTA / 自行預約</th>
+                            <th class="p-5 font-semibold text-forest-800 text-base bg-spa-100/50">泰安+ 旅圖OTA 專屬保障</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-spa-200 text-sm md:text-base">
+                        <tr>
+                            <td class="p-5 font-semibold text-spa-800">1. 路況天災退費機制</td>
+                            <td class="p-5 text-spa-800/70">依照定型化契約扣款，甚至需旅客自行承擔交通中斷風險。</td>
+                            <td class="p-5 text-forest-800 font-medium bg-spa-100/30">
+                                專屬即時路況警報，行前24小時道路受阻**保證100%全額退款**。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-spa-800">2. 在地跨域整合度</td>
+                            <td class="p-5 text-spa-800/70">資訊破碎，住宿、原民手作、伴手禮需自行一一預約。</td>
+                            <td class="p-5 text-forest-800 font-medium bg-spa-100/30">
+                                打包式的「數位通票」，一鍵購足頂級住宿、原民與客家手作工坊。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-spa-800">3. 地方共榮與永續分潤</td>
+                            <td class="p-5 text-spa-800/70">高達 15%~25% 的高額平台佣金流向境外，在地業者被剝削。</td>
+                            <td class="p-5 text-forest-800 font-medium bg-spa-100/30">
+                                透去中心化系統，將利潤最直接留給20家合法飯店、在地小農及部落工坊。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 font-semibold text-spa-800">4. 售後 O2O 連結回購</td>
+                            <td class="p-5 text-spa-800/70">退房後連結即中斷，無法與在地產品產生二次連結。</td>
+                            <td class="p-5 text-forest-800 font-medium bg-spa-100/30">
+                                結合 CRM 會員機制，返家後可低溫宅配大湖草莓、溫泉泥面膜等特產。
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 購買/諮詢與定制表單 (Form & CTA Section) -->
+    <section id="inquiry-form" class="py-20 bg-spa-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- 左側文案 -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-forest-700 font-semibold tracking-wider uppercase text-sm">為您量身打造</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-spa-800">即刻開啟您的泰安數位療癒之旅</h2>
+                    <p class="text-spa-800/70 leading-relaxed font-light text-sm md:text-base">
+                        不管是客製化團體旅遊、企業療癒日、海外旅客包套服務，或是對線上產品回購商城有興趣？
+                    </p>
+                    <p class="text-spa-800/70 leading-relaxed font-light text-sm md:text-base">
+                        留下您的資料，我們專屬的泰安觀光小秘書將在 24 小時內與您聯繫，為您量身打造最無縫、最安心的泰安之旅。
+                    </p>
+                    <div class="space-y-4 pt-4 border-t border-spa-200">
+                        <div class="flex items-center gap-3 text-spa-800">
+                            <i data-lucide="phone" class="text-forest-600"></i>
+                            <span>聯絡專線：(037) 941-XXXX</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-spa-800">
+                            <i data-lucide="mail" class="text-forest-600"></i>
+                            <span>客服信箱：support@taianplus.org.tw</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側表單 -->
+                <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-spa-200/60">
+                    <h3 class="text-2xl font-bold text-spa-800 mb-6">泰安＋ 線上旅遊諮詢與定製</h3>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-xs font-semibold text-spa-800 uppercase tracking-wider mb-2">真實姓名 *</label>
+                                <input type="text" id="name" required class="w-full bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-xs font-semibold text-spa-800 uppercase tracking-wider mb-2">聯絡電話 *</label>
+                                <input type="tel" id="phone" required class="w-full bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-xs font-semibold text-spa-800 uppercase tracking-wider mb-2">電子信箱 *</label>
+                            <input type="email" id="email" required class="w-full bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="persona-type" class="block text-xs font-semibold text-spa-800 uppercase tracking-wider mb-2">您屬於哪類客群？</label>
+                                <select id="persona-type" class="w-full bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition">
+                                    <option value="office_worker">高質感療癒上班族</option>
+                                    <option value="family">文創體驗親子家庭</option>
+                                    <option value="international">國際旅客 / 海外客家尋根</option>
+                                    <option value="other">企業福委 / 團體訂製</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="product-interest" class="block text-xs font-semibold text-spa-800 uppercase tracking-wider mb-2">感興趣的方案</label>
+                                <select id="product-interest" class="w-full bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition">
+                                    <option value="sku_family">冬雪草莓泰雅湯旅 雙人二日數位通票</option>
+                                    <option value="sku_international">國際尋根・客家原民文化一日通票</option>
+                                    <option value="sku_repurchase">泰安美人湯泥漿 居家療癒保養套組</option>
+                                    <option value="custom">量身客製化行程規劃</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-semibold text-spa-800 uppercase tracking-wider mb-2">特別需求或備註</label>
+                            <textarea id="message" rows="4" class="w-full bg-spa-50 border border-spa-200 rounded-xl px-4 py-3 text-spa-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition" placeholder="例如：特殊飲食、交通接駁需求、或預計旅遊人數等..."></textarea>
+                        </div>
+
+                        <div class="flex items-start">
+                            <input id="agreement" type="checkbox" required class="mt-1 h-4 w-4 text-forest-600 border-spa-200 rounded focus:ring-forest-500">
+                            <label for="agreement" class="ml-2 text-xs text-spa-800/70 leading-relaxed">
+                                我同意接收「泰安+ 旅圖OTA」最新路況安全通知與優惠資訊，本平台保障隱私，不進行過度行銷與洩漏第三方。 *
+                            </label>
+                        </div>
+
+                        <button type="submit" id="btn-submit-form" data-track-cta="諮詢表單_提交" data-track-category="form_submission" class="w-full bg-forest-700 hover:bg-forest-600 text-white font-semibold py-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="h-5 w-5"></i>
+                            送出諮詢並取得即時路況安全保障
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常見問答 (FAQ Accordion Section) -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <span class="text-forest-600 font-semibold tracking-wider uppercase text-sm">為您解惑</span>
+                <h2 class="text-3xl font-bold text-spa-800 mt-2">常見問題與安全解答</h2>
+            </div>
+
+            <!-- 手動手風琴 (Accordion) -->
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="border border-spa-200 rounded-2xl overflow-hidden transition-all duration-200">
+                    <button onclick="toggleFaq(1)" class="w-full p-6 text-left font-bold text-spa-800 bg-spa-50 hover:bg-spa-100 transition flex justify-between items-center">
+                        <span>Q1. 苗栗泰安鄉常因大雨造成交通脆弱，萬一出發時路況不好怎麼辦？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-1" class="h-5 w-5 text-spa-800/50 transform transition duration-200"></i>
+                    </button>
+                    <div id="faq-content-1" class="hidden p-6 bg-white border-t border-spa-200 text-sm md:text-base text-spa-800/80 leading-relaxed font-light">
+                        「泰安+」建立了全台首創的「即時天災安全保障系統」。在您的預定日前24小時，若苗栗山區降雨量超標或苗62線聯外道路遇管制阻礙，我們將「主動」發送通知提醒，並為您辦理**100%全額退款**。您不需承擔任何因大自然環境造成的財產損失。
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-spa-200 rounded-2xl overflow-hidden transition-all duration-200">
+                    <button onclick="toggleFaq(2)" class="w-full p-6 text-left font-bold text-spa-800 bg-spa-50 hover:bg-spa-100 transition flex justify-between items-center">
+                        <span>Q2. 這個「數位通票」要如何領取與在實體溫泉會館核銷（O2O）？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-2" class="h-5 w-5 text-spa-800/50 transform transition duration-200"></i>
+                    </button>
+                    <div id="faq-content-2" class="hidden p-6 bg-white border-t border-spa-200 text-sm md:text-base text-spa-800/80 leading-relaxed font-light">
+                        當您在線上完成付款後，系統會自動生成帶有專屬加密 QR Code 的數位憑證發送到您的 Email 與手機。抵達泰安鄉合作的20家合法飯店或部落手作工坊時，只需出示手機條碼進行「一秒核銷」即可。不需列印紙本，資訊安全且環保。
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-spa-200 rounded-2xl overflow-hidden transition-all duration-200">
+                    <button onclick="toggleFaq(3)" class="w-full p-6 text-left font-bold text-spa-800 bg-spa-50 hover:bg-spa-100 transition flex justify-between items-center">
+                        <span>Q3. 我們是團體或公司福委，可以定製特殊的「原民與客家」文化體驗嗎？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-3" class="h-5 w-5 text-spa-800/50 transform transition duration-200"></i>
+                    </button>
+                    <div id="faq-content-3" class="hidden p-6 bg-white border-t border-spa-200 text-sm md:text-base text-spa-800/80 leading-relaxed font-light">
+                        非常歡迎！我們長期與在地的原住民泰雅織織工藝坊、客家茶染工作坊、以及地方小農合作，能為企業或大型團體定製多層次的文化工作坊。請直接填寫「線上定製表單」，我們的觀光小秘書會為您規劃專屬方案。
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-spa-200 rounded-2xl overflow-hidden transition-all duration-200">
+                    <button onclick="toggleFaq(4)" class="w-full p-6 text-left font-bold text-spa-800 bg-spa-50 hover:bg-spa-100 transition flex justify-between items-center">
+                        <span>Q4. 回家後如何回購這次旅行體驗到的在地伴手禮、農產或泥漿護膚保養品？</span>
+                        <i data-lucide="chevron-down" id="faq-icon-4" class="h-5 w-5 text-spa-800/50 transform transition duration-200"></i>
+                    </button>
+                    <div id="faq-content-4" class="hidden p-6 bg-white border-t border-spa-200 text-sm md:text-base text-spa-800/80 leading-relaxed font-light">
+                        核銷通票時您會被邀請加入我們的 CRM 綠色永續會員（完全自願且保密）。回家後，您可以隨時登入「泰安+ 旅圖商城」，購買當季的新鮮大湖無毒草莓、泰雅古法竹編與天然美人湯溫泉泥保養品，直接由產地低溫宅配到府，持續支持泰安鄉地方創生。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-forest-900 text-white border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- 品牌願景 -->
+                <div class="space-y-4 md:col-span-2">
+                    <span class="text-2xl font-bold text-forest-200 flex items-center gap-2">
+                        <i data-lucide="waves"></i>
+                        泰安+ 旅圖OTA
+                    </span>
+                    <p class="text-spa-100 text-sm leading-relaxed max-w-sm font-light">
+                        透過數位化技術實質取代缺失的實體溫泉協會，打破天災環境障礙，將泰安「好湯、好產、好文化」打包推向全球。
+                    </p>
+                    <p class="text-emerald-400 text-xs">
+                        $Conversion\ Rate = \frac{Transactions}{Sessions} \times 100\%$ ─ 我們用數據推動轉換，用溫暖復興地方。
+                    </p>
+                </div>
+
+                <!-- 快速連結 -->
+                <div class="space-y-4">
+                    <h4 class="font-semibold text-white tracking-wider text-sm uppercase">快速連結</h4>
+                    <ul class="space-y-2 text-sm text-spa-200">
+                        <li><a href="#value-proposition" class="hover:text-forest-200 transition">數位通票預訂</a></li>
+                        <li><a href="#local-story" class="hover:text-forest-200 transition">AI 文化與溫泉導航</a></li>
+                        <li><a href="#painpoint-hub" class="hover:text-forest-200 transition">即時安全路況承諾</a></li>
+                        <li><a href="#faq" class="hover:text-forest-200 transition">天災退款常見細則</a></li>
+                    </ul>
+                </div>
+
+                <!-- 隱私與倫理保證 -->
+                <div class="space-y-4">
+                    <h4 class="font-semibold text-white tracking-wider text-sm uppercase">數位倫理承諾</h4>
+                    <ul class="space-y-2 text-xs text-spa-200/80 leading-relaxed">
+                        <li>🛡 **數據蒐集透明**：僅用於路況安全通知，不惡意推播。</li>
+                        <li>⚖ **無演算法偏見**：AI推薦20家合法飯店機制均等。</li>
+                        <li>🤝 **產地永續回饋**：線上商城分潤保證留存地方創生基金。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 底線版權 -->
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-spa-200/60 space-y-4 sm:space-y-0">
+                <span>© 2026 泰安+ 旅圖OTA 地方創生數位專案小組. All rights reserved.</span>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition">服務條款</a>
+                    <a href="#" class="hover:text-white transition">隱私權政策</a>
+                    <a href="#" class="hover:text-white transition">數據使用說明</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GA4 追蹤回饋模擬 Toast 系統 -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 text-spa-800"></div>
+
+    <script>
+        // 初始化 Lucide 圖標
+        lucide.createIcons();
+
+        // 1. 手機選單切換 (Mobile Menu Drawer)
+        const btnMobileMenu = document.getElementById('btn-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        btnMobileMenu.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            }
+        });
+
+        // 2. 互動式 RAG 文化故事切換器
+        function switchStory(panelId) {
+            // 隱藏所有故事面板
+            document.querySelectorAll('.story-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            // 顯示當前面板
+            document.getElementById(`story-content-${panelId}`).classList.remove('hidden');
+
+            // 移除所有 Tab 的 Active 樣式
+            document.querySelectorAll('.story-tab').forEach(tab => {
+                tab.classList.remove('active', 'bg-forest-700', 'text-white');
+                tab.classList.add('bg-white/5', 'hover:bg-white/10', 'text-spa-100');
+            });
+
+            // 為當前 Tab 添加 Active 樣式
+            const activeTab = document.getElementById(`tab-${panelId}`);
+            activeTab.classList.remove('bg-white/5', 'hover:bg-white/10', 'text-spa-100');
+            activeTab.classList.add('active', 'bg-forest-700', 'text-white');
+
+            // 觸發自訂 GA4 故事閱讀點擊事件
+            fireSimulatedGtag('RAG故事切換', 'story_navigation', `切換到_${panelId}`);
+        }
+
+        // 3. 常見問答手風琴系統 (FAQ Accordion)
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            const isHidden = content.classList.contains('hidden');
+
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+                fireSimulatedGtag('展開FAQ', 'faq_interaction', `問題_${id}`);
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // 4. 表單提交模擬
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const personaType = document.getElementById('persona-type').value;
+            const productInterest = document.getElementById('product-interest').value;
+
+            // 執行實體數據追蹤，並模擬送出 GA4 Lead 事件
+            console.log(`[GA4 Lead Sent] Event: generate_lead, Name: ${name}, Persona: ${personaType}, Interest: ${productInterest}`);
+            
+            // 實體 gtag 的發送（當真實部署時會運作）
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', {
+                    'event_category': 'form_submission',
+                    'event_label': `潛在客群_${personaType}`,
+                    'value': productInterest === 'custom' ? 10000 : 5000,
+                    'currency': 'TWD'
+                });
+            }
+
+            showToast(`🎉 提交成功！${name} 您好，小秘書將盡快與您聯繫。已追蹤 GA4 「generate_lead」事件！`, 'success');
+            
+            // 重置表單
+            document.getElementById('contactForm').reset();
+        }
+
+        // 5. 數據分析 - 主要 CTA 按鈕點擊事件監聽器
+        document.querySelectorAll('[data-track-cta]').forEach(button => {
+            button.addEventListener('click', function() {
+                const ctaName = this.getAttribute('data-track-cta');
+                const ctaCategory = this.getAttribute('data-track-category') || 'general';
+                
+                // 觸發 GA4 實體與模擬事件
+                fireSimulatedGtag(ctaName, ctaCategory, 'click');
+            });
+        });
+
+        // 為所有 SKU 購買按鈕綁定追蹤事件
+        document.querySelectorAll('.btn-purchase').forEach(button => {
+            button.addEventListener('click', function() {
+                const skuName = this.getAttribute('data-track-cta');
+                showToast(`🛒 已將 [${skuName}] 預約需求暫存並追蹤 GA4 「add_to_cart」！`, 'info');
+            });
+        });
+
+        // 6. 模擬 GA4 數據追蹤回饋函式
+        function fireSimulatedGtag(action, category, label) {
+            console.log(`%c[GA4 數據追蹤中] %c事件: ${action} | 分類: ${category} | 標籤: ${label}`, "color: #2d6a4f; font-weight: bold;", "color: #40916c;");
+            
+            // 運作實體 gtag.js
+            if (typeof gtag === 'function') {
+                gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label
+                });
+            }
+            
+            showToast(`📊 偵測到點擊！已追蹤 GA4 事件: [${action}]`, 'info');
+        }
+
+        // 7. 精緻小 UI 提示系統 (Toast notification)
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let bgClass = 'bg-slate-900';
+            if (type === 'success') bgClass = 'bg-forest-800';
+            if (type === 'info') bgClass = 'bg-emerald-900';
+
+            toast.className = `${bgClass} text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs md:text-sm font-medium transition duration-300 transform translate-y-10 opacity-0 max-w-sm border border-white/10`;
+            toast.innerHTML = `
+                <i data-lucide="info" class="h-5 w-5 shrink-0 text-emerald-300"></i>
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            // 動畫進入
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            }, 100);
+
+            // 動畫退出
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4500);
+        }
+
+        // 8. AI 聊天機器人專用資料庫與邏輯
+        const botKnowledgeBase = {
+            spring: {
+                keywords: ['泉質', '美人湯', '溫泉', '功效', '皮膚', '碳酸', '好湯', '效果', '特色'],
+                answer: `💧 <strong>泰安溫泉泉質大解密：</strong><br><br>
+                泰安溫泉是極為稀有的<strong>「弱鹼性碳酸氫鈉泉」</strong>，俗稱「美人湯」。<br>
+                • <strong>泉溫與pH值：</strong> 出水口溫度約為 47°C ~ 52°C，pH 值維持在微鹼性的 7.8 ~ 8.1 之間。<br>
+                • <strong>肌膚功效：</strong> 豐富的碳酸氫離子能溫和软化肌膚角質、促進代謝。浸泡時觸感潤滑如脂，像泡在天然保濕乳液中，能深層修護並維持皮膚的光滑細緻。<br>
+                • <strong>健康益處：</strong> 無色無臭，泡後不黏膩，對於舒緩上班族的久坐疲勞、促進全身血液循環有極佳的理療效果。`
+            },
+            traffic: {
+                keywords: ['路況', '安全', '下雨', '交通', '豪雨', '颱風', '崩塌', '苗62', '管制', '退費', '退款'],
+                answer: `🚗 <strong>交通安全與 100% 退費保障承諾：</strong><br><br>
+                針對泰安聯外道路（苗62線）在雨季地質較脆弱的痛點，我們首創了「即時路況安全機制」：<br>
+                1. <strong>即時監測：</strong> 本平台與公路總局及苗栗消防局即時連線。若出發前山區觀測到雨量異常，我們將主動發送簡訊與 Email 預警。<br>
+                2. <strong>100% 退費承諾：</strong> 若在您出發前 24 小時，苗62線因豪雨發生管制或不適宜通行，<strong>本平台保障 100% 全額退款</strong>，不收任何手續費，免除您行前的一切金錢與行車擔憂！`
+            },
+            itinerary: {
+                keywords: ['行程', '兩天一夜', '一日遊', '規劃', '怎麼玩', '玩', '推薦行程', '好玩'],
+                answer: `📅 <strong>推薦泰安經典療癒二日遊（專屬數位通票行程）：</strong><br><br>
+                • <strong>Day 1：文化與好湯療癒</strong><br>
+                中午抵達清安豆腐街（洗水坑），品嚐百年手工豆腐御膳 ➔ 下午入住合作的精品溫泉飯店，享受露天大眾美人湯或隱密湯屋 ➔ 享用在地客家風味晚餐，沈浸於森林星空之中。<br><br>
+                • <strong>Day 2：部落探秘與採果</strong><br>
+                晨間享用在地小農早餐 ➔ 前往泰雅部落，由長老帶領進行原民水平背帶織布或古道獵人射箭體驗 ➔ 下午前往大湖無毒果園，親手採摘新鮮多汁的大湖草莓 ➔ 帶著充實的身心回家。`
+            },
+            food: {
+                keywords: ['美食', '好吃的', '必吃', '吃', '清安豆腐', '餐廳', '豆腐街', '原住民美食', '客家菜', '草莓'],
+                answer: `🍲 <strong>泰安在地老饕美食清單：</strong><br><br>
+                在泰安，您可以同時享受到客家文化與泰雅原民美食的跨界交融：<br>
+                1. <strong>清安豆腐街（洗水坑）：</strong> 必嚐「手工黑豆腐」與「涼拌三色豆腐」，口感綿密帶有淡淡柴香。<br>
+                2. <strong>原民部落山珍：</strong> 必吃馬告（山胡椒）烤豬肉、手搗刺蔥竹筒飯、以及鮮美的山溪蝦。<br>
+                3. <strong>當季特產：</strong> 每年 12 月至隔年 4 月是大湖草莓季，鮮甜誘人；泡湯過後搭配一杯在地客家擂茶，更能洗滌身心疲憊！`
+            },
+            culture: {
+                keywords: ['文化', '泰雅', '原住民', '客家', '尋根', '工藝', '織布', '茶染', '創生', '歷史'],
+                answer: `🏹 <strong>原民泰雅與客家尋根的文化底蘊：</strong><br><br>
+                泰安鄉是泰雅族汶水群的傳統世居地，也是客家移民篳路藍縷開墾的要塞：<br>
+                • <strong>泰雅獵人文化：</strong> 溫泉在泰雅語中是「祖靈賜予的熱水」。我們的數位通票將帶您走進部落，體驗傳承百年的水平背帶織物，親手觸摸歷史的織紋。<br>
+                • <strong>客家茶染工藝：</strong> 先民將溫泉中的微量礦物質作為天然媒染劑，與在地茶葉染製出大地色系的花布。我們特別為海外客家尋根旅客（馬、星、日）提供專屬雙語導覽服務，探尋祖輩與這片土地的深刻連結。`
+            }
+        };
+
+        // 發送訊息
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const messageText = input.value.trim();
+            if (!messageText) return;
+
+            addMessageBubble(messageText, 'user');
+            input.value = '';
+
+            // 觸發模擬 GA4 的 Chat 提交事件
+            fireSimulatedGtag('Chatbot諮詢', 'chatbot_interaction', `諮詢文字_${messageText.substring(0,10)}`);
+
+            // 顯示 AI 正在輸入的動畫
+            const typingId = showTypingIndicator();
+
+            setTimeout(() => {
+                removeTypingIndicator(typingId);
+                const reply = generateBotReply(messageText);
+                addMessageBubble(reply, 'bot');
+            }, 1200);
+        }
+
+        // 熱門問題快捷鍵點擊
+        function askBot(question) {
+            addMessageBubble(question, 'user');
+            fireSimulatedGtag('Chatbot快捷點擊', 'chatbot_interaction', question);
+            
+            const typingId = showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator(typingId);
+                const reply = generateBotReply(question);
+                addMessageBubble(reply, 'bot');
+            }, 1000);
+        }
+
+        // 依據關鍵字匹配回答
+        function generateBotReply(text) {
+            const normalizedText = text.toLowerCase();
+            
+            for (const key in botKnowledgeBase) {
+                const category = botKnowledgeBase[key];
+                const matched = category.keywords.some(keyword => normalizedText.includes(keyword));
+                if (matched) {
+                    return category.answer;
+                }
+            }
+
+            // 預設 RAG 智慧搜尋回覆
+            return `🔍 <strong>AI 小祕書正在檢索泰安數位樞紐 RAG 知識庫...</strong><br><br>
+            您詢問的「<strong>${text}</strong>」目前尚無完全匹配的標準答案，但別擔心！<br><br>
+            您可以留下您的聯絡方式，或者直接撥打我們的諮詢熱線：<strong class="text-forest-700">(037) 941-XXXX</strong>。我們將有專人與在地溫泉協會為您解答。您也可以嘗試輸入：<strong>「泉質、路況安全、行程推薦、在地美食、泰雅文化」</strong>等關鍵字重新查詢喔！`;
+        }
+
+        // 畫面渲染對話泡泡
+        function addMessageBubble(text, sender) {
+            const chatMessages = document.getElementById('chat-messages');
+            const bubbleContainer = document.createElement('div');
+            
+            if (sender === 'user') {
+                bubbleContainer.className = "flex items-start gap-3 justify-end";
+                bubbleContainer.innerHTML = `
+                    <div class="bg-forest-700 text-white text-sm py-3 px-4 rounded-2xl rounded-tr-none max-w-[85%] shadow-sm leading-relaxed">
+                        ${text}
+                    </div>
+                `;
+            } else {
+                bubbleContainer.className = "flex items-start gap-3";
+                bubbleContainer.innerHTML = `
+                    <div class="w-8 h-8 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="h-4 w-4"></i>
+                    </div>
+                    <div class="bg-white border border-spa-200/50 text-spa-800 text-sm py-3 px-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm leading-relaxed">
+                        ${text}
+                    </div>
+                `;
+            }
+
+            chatMessages.appendChild(bubbleContainer);
+            lucide.createIcons();
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 顯示思考中動畫
+        function showTypingIndicator() {
+            const chatMessages = document.getElementById('chat-messages');
+            const indicator = document.createElement('div');
+            const uniqueId = 'typing-' + Date.now();
+            
+            indicator.id = uniqueId;
+            indicator.className = "flex items-start gap-3 animate-pulse";
+            indicator.innerHTML = `
+                <div class="w-8 h-8 bg-spa-200 text-spa-800 rounded-full flex items-center justify-center shrink-0">
+                    <i data-lucide="bot" class="h-4 w-4"></i>
+                </div>
+                <div class="bg-spa-100 text-spa-800/60 text-xs py-3 px-4 rounded-2xl rounded-tl-none flex items-center gap-1">
+                    <span>AI 小祕書正在查閱資料庫中</span>
+                    <span class="animate-bounce">.</span>
+                    <span class="animate-bounce [animation-delay:0.2s]">.</span>
+                    <span class="animate-bounce [animation-delay:0.4s]">.</span>
+                </div>
+            `;
+            
+            chatMessages.appendChild(indicator);
+            lucide.createIcons();
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return uniqueId;
+        }
+
+        // 移除思考中動畫
+        function removeTypingIndicator(id) {
+            const indicator = document.getElementById(id);
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // 清空對話
+        function clearChat() {
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-forest-100 text-forest-700 rounded-full flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="h-4 w-4"></i>
+                    </div>
+                    <div class="bg-white border border-spa-200/50 text-spa-800 text-sm py-3 px-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm leading-relaxed">
+                        對話已清空！我是泰安溫泉的 AI 智慧小祕書 🌲。我可以為您解答關於泰安的美人湯泉質功效、兩天一夜行程規劃、最新即時路況，或是推薦在地的泰雅與客家美食喔！請輸入您的疑問：
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+            fireSimulatedGtag('清空Chatbot', 'chatbot_interaction', 'clear');
+        }
+
+        // 鍵盤發送事件
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+    </script>
+</body>
+</html>
